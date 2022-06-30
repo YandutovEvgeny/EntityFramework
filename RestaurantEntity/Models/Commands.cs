@@ -17,11 +17,18 @@ namespace RestaurantEntity.Models
         }
 
         Action _action;
+        Action<object> _actionWithParam;    //Для закрытия окна
         Func<bool> _canExecute;
 
         public Commands(Action action, Func<bool> canExecute = null)
         {
             _action = action;
+            _canExecute = canExecute;
+        }
+        //Перегрузка конструктора для закрытия окна RegistrationView
+        public Commands(Action<object> action, Func<bool> canExecute = null)
+        {
+            _actionWithParam = action;
             _canExecute = canExecute;
         }
 
@@ -32,7 +39,11 @@ namespace RestaurantEntity.Models
 
         public void Execute(object parameter)
         {
-            _action();
+            if(_action != null)
+                _action();
+
+            if (_actionWithParam != null)
+                _actionWithParam(parameter);
         }
     }
 }

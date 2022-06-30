@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestaurantEntity.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -9,10 +10,9 @@ namespace RestaurantEntity
 {
     class UserContext : DbContext
     {
-        public UserContext() : base("DefaultConnection")
-        {
-
-        }
-        public DbSet<User> Users { get; set; }  //Наша таблица
+        public UserContext() : base("DefaultConnection") { }
+        public DbSet<User> Users { get; set; }  //Наша таблица с пользователями
+        public DbSet<Category> Categories { get; set; } //Наша таблица с категориями
+        public DbSet<Menu> RestaurantMenu { get; set; }
     }
 }

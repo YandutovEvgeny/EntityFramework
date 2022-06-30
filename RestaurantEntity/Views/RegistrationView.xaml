@@ -1,14 +1,15 @@
-﻿<Window x:Class="RestaurantEntity.MainWindow"
+﻿<Window x:Class="RestaurantEntity.Views.RegistrationView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:RestaurantEntity"
-        xmlns:ViewModel="clr-namespace:RestaurantEntity.ViewModels"
+        xmlns:local="clr-namespace:RestaurantEntity.Views"
+        xmlns:Reg="clr-namespace:RestaurantEntity.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="241.5" Width="275">
+        Title="RegistrationView" Height="280" Width="275"
+        x:Name="RegistrationWindow">
     <Window.DataContext>
-        <ViewModel:LoginViewModel></ViewModel:LoginViewModel>
+        <Reg:RegistrationViewModel></Reg:RegistrationViewModel>
     </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -26,13 +27,15 @@
             <TextBox Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             <Label>Пароль:</Label>
             <TextBox Text="{Binding Pass, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-            <Button Command="{Binding LoginClick, UpdateSourceTrigger=PropertyChanged}" Margin="40,10,40,10">Вход</Button>
-            <!--Биндим нажатие на TextBlock-->
-            <TextBlock Text="Регистрация" TextAlignment="Center">
-                <TextBlock.InputBindings>
-                    <MouseBinding Command="{Binding RegistrationClick}" MouseAction="LeftClick"></MouseBinding>
-                </TextBlock.InputBindings>
-            </TextBlock>
+            <Label>Имя:</Label>
+            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <!--Биндим параметр object, определяем параметр как данное окно-->
+            <Button 
+                CommandParameter="{Binding ElementName=RegistrationWindow}" 
+                Command="{Binding RegClick, UpdateSourceTrigger=PropertyChanged}" 
+                Margin="35,15,35,0"
+                Content="Зарегистрироваться">
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

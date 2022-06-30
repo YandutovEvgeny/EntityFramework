@@ -70,12 +70,26 @@
     <Compile Include="Migrations\202206281755521_RestaurantMigrations.Designer.cs">
       <DependentUpon>202206281755521_RestaurantMigrations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206301730164_menuMigration.cs" />
+    <Compile Include="Migrations\202206301730164_menuMigration.Designer.cs">
+      <DependentUpon>202206301730164_menuMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Commands.cs" />
     <Compile Include="Models\DataBaseRestaurant.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="RestMenu.xaml.cs">
+      <DependentUpon>RestMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserContext.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\MenuViewModel.cs" />
+    <Compile Include="ViewModels\RegistrationViewModel.cs" />
+    <Compile Include="Views\RegistrationView.xaml.cs">
+      <DependentUpon>RegistrationView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -88,6 +102,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="RestMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RegistrationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -108,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206281755521_RestaurantMigrations.resx">
       <DependentUpon>202206281755521_RestaurantMigrations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206301730164_menuMigration.resx">
+      <DependentUpon>202206301730164_menuMigration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

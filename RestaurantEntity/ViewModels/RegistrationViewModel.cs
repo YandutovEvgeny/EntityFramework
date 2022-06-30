@@ -1,20 +1,17 @@
-﻿using System;
+﻿using RestaurantEntity.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
-using RestaurantEntity.Models;
-using RestaurantEntity.Views;
 
 namespace RestaurantEntity.ViewModels
 {
-    class LoginViewModel : INotifyPropertyChanged
+    class RegistrationViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-
         void Notify(string name)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
@@ -22,40 +19,33 @@ namespace RestaurantEntity.ViewModels
 
         string _login;
         string _pass;
+        string _name;
         DataBaseRestaurant _restaurant;
 
-        public LoginViewModel()
+        public RegistrationViewModel()
         {
             Login = "";
             Pass = "";
+            Name = "";
             _restaurant = new DataBaseRestaurant();
         }
 
-        public Commands RegistrationClick
+        public Commands RegClick
         {
             get
             {
-                return new Commands(new Action(() =>
+                //obj - параметр, котороый мы биндим в RegistrationView
+                return new Commands(new Action<object>((obj) =>
                 {
-                    RegistrationView registration = new RegistrationView();
-                    registration.ShowDialog();
-                }));
-            }
-        }
-        public Commands LoginClick
-        {
-            get
-            {
-                return new Commands(new Action(() =>
-                {
-                    User user = _restaurant.CheckLogin(_login, _pass);
-                    if (user != null)
+                    _restaurant.NewUser(new User()
                     {
-                        RestMenu restMenu = new RestMenu();
-                        restMenu.Show();
-                    }
-                }), 
-                new Func<bool>(() => { return _login != "" && _pass != ""; }));
+                        Login = _login,
+                        Pass = _pass,
+                        Name = _name
+                    });
+                    Window window = (Window)obj;
+                    window.Close();
+                }));
             }
         }
         public string Login
@@ -67,7 +57,6 @@ namespace RestaurantEntity.ViewModels
                 Notify("Login");
             }
         }
-
         public string Pass
         {
             get { return _pass; }
@@ -75,6 +64,15 @@ namespace RestaurantEntity.ViewModels
             {
                 _pass = value;
                 Notify("Pass");
+            }
+        }
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                _name = value;
+                Notify("Name");
             }
         }
     }

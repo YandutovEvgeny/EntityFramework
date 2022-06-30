@@ -20,5 +20,11 @@ namespace RestaurantEntity.Models
                           select user).FirstOrDefault();
             return _user;
         }
+
+        public void NewUser(User user)
+        {
+            context.Users.Add(user);
+            context.SaveChanges();
+        }
     }
 }

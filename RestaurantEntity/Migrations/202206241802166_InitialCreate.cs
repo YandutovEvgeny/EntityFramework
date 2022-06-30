@@ -16,7 +16,6 @@ namespace RestaurantEntity.Migrations
                         Pass = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
-            
         }
         
         public override void Down()
