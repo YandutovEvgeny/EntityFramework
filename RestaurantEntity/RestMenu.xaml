@@ -14,18 +14,25 @@
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="15*"></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="7*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <ComboBox ItemsSource="{Binding Categories, UpdateSourceTrigger=PropertyChanged}"></ComboBox>
-        <ListBox Grid.Row="1"></ListBox>
+        <ComboBox SelectedItem="{Binding SelectedCategory, UpdateSourceTrigger=PropertyChanged}"
+            ItemsSource="{Binding Categories, UpdateSourceTrigger=PropertyChanged}"></ComboBox>
+        <ListBox SelectedIndex="{Binding SelectedId, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding MenuNames, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1"></ListBox>
         <TextBox Grid.Column="1"></TextBox>
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <Label FontSize="20">Header</Label>
-            <Image Height="300"></Image>
-            <Label FontSize="15" FontStyle="Italic">Price</Label>
+            <Label Content="{Binding Name, UpdateSourceTrigger=PropertyChanged}" FontSize="20"></Label>
+            <Image Source="{Binding Url, UpdateSourceTrigger=PropertyChanged}" Height="300"></Image>
+            <StackPanel Orientation="Horizontal">
+                <Label FontSize="15" FontStyle="Italic">Цена:</Label>
+                <Label Content="{Binding Price, UpdateSourceTrigger=PropertyChanged}" FontSize="15" FontStyle="Italic"></Label>
+                <Label FontSize="15" FontStyle="Italic">рублей</Label>
+            </StackPanel>
         </StackPanel>
+        <Button Command="{Binding AddClick, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2">Добавить</Button>
     </Grid>
 </Window>

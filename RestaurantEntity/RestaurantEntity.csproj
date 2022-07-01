@@ -62,6 +62,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddFood.xaml.cs">
+      <DependentUpon>AddFood.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202206241802166_InitialCreate.cs" />
     <Compile Include="Migrations\202206241802166_InitialCreate.Designer.cs">
       <DependentUpon>202206241802166_InitialCreate.cs</DependentUpon>
@@ -84,12 +87,17 @@
       <DependentUpon>RestMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserContext.cs" />
+    <Compile Include="ViewModels\AddFoodViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\RegistrationViewModel.cs" />
     <Compile Include="Views\RegistrationView.xaml.cs">
       <DependentUpon>RegistrationView.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddFood.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

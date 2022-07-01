@@ -1,0 +1,32 @@
+﻿<Window x:Class="RestaurantEntity.AddFood"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RestaurantEntity"
+        xmlns:add="clr-namespace:RestaurantEntity.ViewModels"
+        mc:Ignorable="d"
+        x:Name="ADD"
+        Title="AddFood" Height="341.177" Width="279.747">
+    <Window.DataContext>
+        <add:AddFoodViewModel></add:AddFoodViewModel>
+    </Window.DataContext>
+    <Grid>
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="40">
+            <Label>Название:</Label>
+            <TextBox Text="{Binding AddMenu.Name, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <Label>Цена:</Label>
+            <TextBox Text="{Binding AddMenu.Price, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <Label>Ссылка на фотографию:</Label>
+            <TextBox Text="{Binding AddMenu.Photo, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBox Text="{Binding AddMenu.Category.Id, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <Button 
+                CommandParameter="{Binding ElementName=ADD}" 
+                Command="{Binding AddButtonClick, UpdateSourceTrigger=PropertyChanged}" 
+                Margin="35,15,35,0"
+                Content="Добавить блюдо">
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>
+
